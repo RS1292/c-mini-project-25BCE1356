@@ -16,19 +16,19 @@ void updateStock(Product inventory[], int count) {
             terminal_prompt_int("Enter quantity to add (use negative for sale): ", &change);
             
             if (inventory[i].quantity + change < 0) {
-                terminal_print("Error: Insufficient stock for sale. Transaction cancelled.\n");
+                terminal_print("Insufficient stock for sale\n");
             } else {
                 inventory[i].quantity += change;
-                terminal_print(">> Stock updated correctly. New Quantity: %d\n", inventory[i].quantity);
+                terminal_print(" Stock updated correctly%d\n");
             }
             return;
         }
     }
-    terminal_print(">> Product ID not found.\n");
+    terminal_print(" ProductID not found.\n");
 }
 
 void lowStockReport(Product inventory[], int count) {
-    printf("\n--- Low Stock Report (Threshold: %d) ---\n", LOW_STOCK_THRESHOLD);
+    printf("\nLow Stock Report\n");
     int found = 0;
     for (int i = 0; i < count; i++) {
         if (inventory[i].quantity < LOW_STOCK_THRESHOLD) {
@@ -39,7 +39,7 @@ void lowStockReport(Product inventory[], int count) {
         }
     }
     if (!found) {
-        printf("All products are well stocked.\n");
+        printf("Enough Stock\n");
     }
     fflush(stdout);
 }
@@ -49,6 +49,6 @@ void showTotalValue(Product inventory[], int count) {
     for (int i = 0; i < count; i++) {
         total += (inventory[i].price * inventory[i].quantity);
     }
-    printf("\n>> Total Inventory Value: $%.2f\n", total);
+    printf("\n Inventory Value: ₹%.2f\n", total);
     fflush(stdout);
 }
