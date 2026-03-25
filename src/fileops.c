@@ -34,7 +34,7 @@ void saveToFile(Product inventory[], int count) {
     fwrite(&count, sizeof(int), 1, file);
     fwrite(inventory, sizeof(Product), count, file);
     fclose(file);
-    terminal_print(">> Inventory saved to '%s' successfully.\n", FILENAME);
+    terminal_print("Inventory saved to '%s' successfully.\n", FILENAME);
 
 #ifdef __EMSCRIPTEN__
     js_sync_to_db();
@@ -44,7 +44,7 @@ void saveToFile(Product inventory[], int count) {
 void loadFromFile(Product inventory[], int *count) {
     FILE *file = fopen(FILENAME, "rb");
     if (file == NULL) {
-        printf(">> No existing database found. Starting fresh.\n");
+        printf("New Database\n");
         *count = 0;
         return;
     }
@@ -52,7 +52,7 @@ void loadFromFile(Product inventory[], int *count) {
         *count = 0;
     } else {
         fread(inventory, sizeof(Product), *count, file);
-        printf(">> Loaded %d products from existing database.\n", *count);
+        printf(">> Loaded %d \n", *count);
     }
     fclose(file);
 }
