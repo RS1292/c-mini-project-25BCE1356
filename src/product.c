@@ -32,7 +32,7 @@ void addProduct(Product inventory[], int *count) {
 
     inventory[*count] = newProduct;
     (*count)++;
-    printf(">> Product added successfully.\n");
+    printf("Product added successfully.\n");
     fflush(stdout);
 }
 
@@ -46,17 +46,17 @@ void deleteProduct(Product inventory[], int *count) {
                 inventory[j] = inventory[j + 1];
             }
             (*count)--;
-            printf(">> Product deleted successfully.\n");
+            printf("Product deleted successfully.\n");
             return;
         }
     }
-    terminal_print(">> Product ID %d not found.\n", id);
+    terminal_print("Product ID not found.\n");
     terminal_yield();
 }
 
 void showAllProducts(Product inventory[], int count) {
     if (count == 0) {
-        terminal_print("\n>> Inventory is empty.\n");
+        terminal_print("\nInventory Empty.\n");
         terminal_yield();
         return;
     }
@@ -79,7 +79,7 @@ void searchProduct(Product inventory[], int count) {
 
     for (int i = 0; i < count; i++) {
         if (inventory[i].productID == id) {
-            printf("\n--- Product Found ---\n");
+            printf("\nProduct Found\n");
             printf("ID: %d\nName: %s\nPrice: $%.2f\nQuantity: %d\n",
                    inventory[i].productID, inventory[i].name, inventory[i].price, inventory[i].quantity);
             return;
